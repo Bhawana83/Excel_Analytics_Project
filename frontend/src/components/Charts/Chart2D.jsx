@@ -1,5 +1,4 @@
-// Chart2D.jsx
-import React from "react";
+import React, { forwardRef, useEffect } from "react";
 import { Bar, Line, Pie, Scatter } from "react-chartjs-2";
 import {
   Chart as ChartJS,
@@ -26,32 +25,52 @@ ChartJS.register(
   Legend
 );
 
-const Chart2D = ({ chartType = "bar", data, options }) => {
+const Chart2D = forwardRef(({ chartType = "bar", data, options, onChartRef }, ref) => {
+  const chartRef = React.useRef();
+
+  useEffect(() => {
+    if (chartRef.current && onChartRef) {
+      // Delay to ensure chart is fully rendered
+      const timer = setTimeout(() => {
+        onChartRef(chartRef.current);
+      }, 100);
+      return () => clearTimeout(timer);
+    }
+  }, [chartRef, onChartRef, chartType, data]);
+
   switch (chartType) {
     case "line":
-      return <Line data={data} options={options} />;
-    case "pie":
       return (
-        <div className="w-full flex justify-center">
-          <div className="w-full max-w-[400px] md:max-w-[500px] aspect-square">
-            <Pie data={data} options={options} />
-          </div>
+        <div className="w-full h-full">
+          <Line ref={chartRef} data={data} options={options} />
         </div>
       );
-    // case "scatter":
-    //   return (
-    //     <div className="w-full flex justify-center">
-    //       <Scatter data={data} options={options} />
-    //     </div>
-    //   );
+
+    case "pie":
+      return (
+        <div className="w-full h-full flex justify-center items-center">
+          <Pie ref={chartRef} data={data} options={options} />
+        </div>
+      );
+
+    case "scatter":
+      return (
+        <div className="w-full h-full">
+          <Scatter ref={chartRef} data={data} options={options} />
+        </div>
+      );
+
     case "bar":
     default:
       return (
-        <div className="relative h-[300px] sm:h-[400px] md:h-[500px]">
-          <Bar data={data} options={options} />
+        <div className="w-full h-full">
+          <Bar ref={chartRef} data={data} options={options} />
         </div>
       );
   }
-};
+});
+
+Chart2D.displayName = "Chart2D";
 
 export default Chart2D;
+

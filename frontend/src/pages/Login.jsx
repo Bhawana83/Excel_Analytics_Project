@@ -38,31 +38,40 @@ const Login = () => {
     }
 
     setError("");
+   // LOGIN API CALL
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
         password,
       });
 
-      const { token, userr } = response.data;
+      const { token, user } = response.data;
       if (token) {
-        localStorage.setItem("token", token);
-        localStorage.setItem("user", JSON.stringify(userr));
-        updateUser(userr);
-        toast.success("Login successfully!!");
-        navigate("/");
+        localStorage.setItem("token", token); // Store token in local storage
+        localStorage.setItem("user", JSON.stringify(user)); // Store token in local storage
+        updateUser(user); // Update user context
+
+        // 🟢 CHANGE: Role-based redirect
+        if (user.role === "super-admin") {
+          toast.success("Welcome Super Admin!");
+          navigate("/super-admin/dashboard"); // go to super admin panel
+        } else {
+          toast.success("Login successfully!"); // normal user/admin flow
+          navigate("/"); // Redirect to dashboard
+        }
       }
     } catch (error) {
       if (error.response && error.response.data.message) {
         setError(error.response.data.message);
       } else {
-        setError("Something went wrong, Please try again later");
+        setError(error.message);
+        // setError("Something went wrong. Please try again later.");
       }
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-linear-to-r/srgb from-indigo-400 to-teal-400">
+    <div className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-linear-to-r/srgb from-cyan-300 to-sky-400">
       <div className="bg-transparent p-10 rounded-lg shadow-2xl w-full sm:w-96 text-white text-sm ">
         <h2 className="text-3xl font-semibold text-white text-center mb-3">
           Login
@@ -71,7 +80,7 @@ const Login = () => {
         <p className="text-center text-sm mb-6">Login to your account!!</p>
 
         <form onSubmit={onSubmitHandler}>
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#196c9c]">
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#1294e0]">
             <img src={assets.mail_icon} alt="" />
             <input
               onChange={(e) => setEmail(e.target.value)} //stores the data through setName in the value variable 'name'
@@ -83,7 +92,7 @@ const Login = () => {
             />
           </div>
 
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#196c9c]">
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#1294e0]">
             <img src={assets.lock_icon} alt="" />
             <input
               onChange={(e) => setPassword(e.target.value)} //stores the data through setName in the value variable 'name'
@@ -96,7 +105,7 @@ const Login = () => {
           </div>
           {error && <p className="text-red-600 text-sm pb-2.5">{error}</p>}
 
-          <button className="w-full py-2.5 rounded-full bg-[#174e6e] text-white font-medium cursor-pointer hover:from-indigo-600 hover:to-indigo-800 hover:scale-105 hover:shadow-lg transition-all duration-300">
+          <button className="w-full py-2.5 rounded-full bg-[#086ea8] text-white font-medium cursor-pointer hover:from-blue-600 hover:to-cyan-600 hover:scale-105 hover:shadow-lg transition-all duration-300">
             Login
           </button>
 

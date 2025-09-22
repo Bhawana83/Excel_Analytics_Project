@@ -1,27 +1,37 @@
+import { useEffect } from "react";
 import { createContext, useState } from "react";
 
 export const UserContext = createContext();
 
-export const UserProvider =({children})=>{
-    let userData=null;
-    userData=localStorage.getItem('userr');
+export const UserProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
 
-    const [user,setUser]=useState(userData);
-
-    //function to update user
-    const updateUser = (userData)=>{
-        setUser(userData);
-    };
-
-    //function to clear user datacons
-    const clearUser=()=>{
+  // ✅ Load user from localStorage when app initializes
+  useEffect(() => {
+    const storedUser = localStorage.getItem("user");
+    if (storedUser) {
+      try {
+        setUser(JSON.parse(storedUser));
+      } catch (err) {
+        console.error("Error parsing user from localStorage", err);
         setUser(null);
-    };
+      }
+    }
+  }, []);
 
-    return (
-        <UserContext.Provider value={{user,updateUser,clearUser}}>
-            {children}
-        </UserContext.Provider> 
-    );
+  // Function to update user
+  const updateUser = (userData) => {
+    setUser(userData);
+  };
 
+  // Function to clear user data (Ex. on logout)
+  const clearUser = () => {
+    setUser(null);
+  };
+
+  return (
+    <UserContext.Provider value={{ user, updateUser, clearUser }}>
+      {children}
+    </UserContext.Provider>
+  );
 };

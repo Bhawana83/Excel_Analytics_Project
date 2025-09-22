@@ -1,5 +1,5 @@
 const express = require("express");
-const { login, register, logout, getUserInfo } = require("../controllers/authController");
+const { login, register, logout, getUserInfo, approvedLogin } = require("../controllers/authController");
 const { protect } = require("../middleware/authMiddleware");
 
 
@@ -9,6 +9,8 @@ router.post("/register", register);
 router.post("/login", login);
 router.get("/logout", logout);
 router.get("/getUser", protect, getUserInfo);   // backendurl+'/api/auth/getUser par request krni hai
+router.post("/approved-login/:id", approvedLogin);
+
 
 module.exports = router;
 

@@ -6,8 +6,12 @@ const authRoutes = require("./routes/authRoutes");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
 const adminRoutes = require("./routes/adminRoutes");
+const adminFileRoutes = require("./routes/adminFileRoutes.js"); // routes nhi kra kya
 const uploadRoutes = require("./routes/uploadRoutes.js");
 const dashboardRoutes = require('./routes/dashboardRoutes.js')
+const superAdminRoutes = require("./routes/superAdminRoutes.js");
+const settingRoutes = require("./routes/settingsRoutes.js");
+const superadminFileRoutes = require("./routes/superAdminFileRoutes.js")
 
 // gridfsBucket helper
 const { initGridFSBucket } = require("./utils/gridfsBucket.js");
@@ -37,8 +41,13 @@ connectDB()
 
     app.use("/api/auth", authRoutes); // Auth Middleware
     app.use("/api/admin", adminRoutes); // Middleware for admin routes
+    app.use("/api/admin/files", adminFileRoutes); // Middleware for admin routes
     app.use("/api/upload", uploadRoutes); // Middleware for file upload routes
     app.use("/api/dashboard", dashboardRoutes); // Middleware for Dashboard routes
+    app.use("/api/superadmin", superAdminRoutes); // Middleware for superadmin routes
+    app.use("/api/superadmin/files", superadminFileRoutes); // Middleware for admin routes
+    app.use("/api/settings", settingRoutes); // Middleware for settings routes
+
 
     const PORT = process.env.PORT || 8080;
     app.listen(PORT, () => {
