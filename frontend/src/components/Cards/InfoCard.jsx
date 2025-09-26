@@ -2,7 +2,7 @@ export default function InfoCard({ icon, label, value, color }) {
   return ( 
     <div className="flex items-center justify-between bg-gradient-to-br from-white via-gray-50 to-gray-100 p-6 max-sm:p-4 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 border border-gray-200/60 group">
       
-      {/* Icon Section */}
+      {/* Icon Section */} 
       <div
         className={`flex items-center justify-center w-16 h-16 max-sm:w-12 max-sm:h-12 rounded-xl ${color} text-white text-[24px] shadow-md group-hover:scale-105 transition-transform duration-300`}
       >

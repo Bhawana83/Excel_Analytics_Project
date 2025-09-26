@@ -73,19 +73,19 @@ const Home = () => {
             icon={<FileStack size={26} />}
             label="Total Uploads"
             value={dashboardData?.totalUploads || 0}
-            color="from-cyan-200 to-teal-400"
+            color="from-cyan-200 to-sky-300"
           />
           <InfoCard
             icon={<FolderOpen size={26} />}
             label="Current Uploads"
             value={dashboardData?.currentUploads || 0}
-            color="from-cyan-200 to-teal-400"
+            color="from-cyan-200 to-sky-300"
           />
           <InfoCard
             icon={<Trash2 size={26} />}
             label="Deleted Uploads"
             value={dashboardData?.deleteUploads || 0}
-            color="from-cyan-200 to-teal-400"
+            color="from-cyan-200 to-sky-300"
           />
         </div>
 

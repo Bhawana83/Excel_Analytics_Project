@@ -79,11 +79,11 @@ const Register = () => {
         <form onSubmit={onSubmitHandler}>
           {/* Name Input */}
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.person_icon} alt="person icon" />
+            <img src={assets.person_icon} alt="person icon" className="w-5 h-5 filter invert brightness-0" />
             <input
               onChange={(e) => setName(e.target.value)}
               value={name}
-              className="bg-transparent outline-none w-full text-white placeholder-white"
+              className="bg-transparent outline-none w-full text-black placeholder-black"
               type="text"
               placeholder="Full Name"
               required
@@ -92,11 +92,11 @@ const Register = () => {
 
           {/* Email Input */}
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.mail_icon} alt="email icon" />
+            <img src={assets.mail_icon} alt="email icon" className="w-5 h-5 filter invert brightness-0" />
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="bg-transparent outline-none w-full text-white placeholder-white"
+              className="bg-transparent outline-none w-full text-black placeholder-black"
               type="email"
               placeholder="Email Id"
               required
@@ -105,11 +105,11 @@ const Register = () => {
 
           {/* Password Input */}
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.lock_icon} alt="lock icon" />
+            <img src={assets.lock_icon} alt="lock icon" className="w-5 h-5 filter invert brightness-0"/>
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              className="bg-transparent outline-none w-full text-white placeholder-white"
+              className="bg-transparent outline-none w-full text-black placeholder-black"
               type="password"
               placeholder="Password"
               required
@@ -118,11 +118,11 @@ const Register = () => {
 
           {/* Role Selection */}
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.person_icon} alt="role icon" />
+            <img src={assets.person_icon} alt="role icon" className="w-5 h-5 filter invert brightness-0"/>
             <select
               value={role}
               onChange={(e) => setRole(e.target.value)}
-              className="bg-transparent outline-none w-full text-white"
+              className="bg-transparent outline-none w-full text-black"
             >
               <option value="user" className="text-black">
                 User

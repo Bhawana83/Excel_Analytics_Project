@@ -7,6 +7,8 @@ import { toast } from "react-toastify";
 import { UserContext } from "../context/userContext";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axiosInstance";
+import { LockIcon } from "lucide-react";
+//import { ReactComponent as LockIcon } from "../assets/";
 
 const Login = () => {
   const navigate = useNavigate();
@@ -78,11 +80,12 @@ const Login = () => {
 
         <form onSubmit={onSubmitHandler}>
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.mail_icon} alt="email icon" />
+            <img src={assets.mail_icon} alt="email icon"  className="w-5 h-5 filter invert brightness-0"/>
+
             <input
               onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="bg-transparent outline-none w-full text-white placeholder-white"
+              className="bg-transparent outline-none w-full text-black placeholder-black"
               type="email"
               placeholder="Email Id"
               required
@@ -90,11 +93,12 @@ const Login = () => {
           </div>
 
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.lock_icon} alt="lock icon" />
+            <LockIcon className="w-5 h-5 text-white fill-current " />
+
             <input
               onChange={(e) => setPassword(e.target.value)}
               value={password}
-              className="bg-transparent outline-none w-full text-white placeholder-white"
+              className="bg-transparent outline-none w-full text-black placeholder-black"
               type="password"
               placeholder="Password"
               required

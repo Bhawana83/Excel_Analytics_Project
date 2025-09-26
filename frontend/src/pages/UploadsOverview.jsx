@@ -11,8 +11,7 @@ const UploadsOverview = ({ totalUploads, currentUploads, deleteUploads }) => {
 
   return (
     <div
-      className="relative overflow-hidden rounded-2xl p-6 max-sm:p-4 
-      bg-sky-300 text-white shadow-lg"
+      className="relative overflow-hidden rounded-2xl p-6 max-sm:p-4 bg-gradient-to-r from-cyan-200 to-sky-300 text-black shadow-lg"
     >
       {/* Decorative Glow */}
       <div className="absolute -top-14 -left-14 w-40 h-40 bg-white/20 rounded-full blur-3xl opacity-40" />
