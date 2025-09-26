@@ -8,8 +8,6 @@ import { UserContext } from "../context/userContext";
 import { API_PATHS } from "../utils/apiPaths";
 import axiosInstance from "../utils/axiosInstance";
 
-
-
 const Login = () => {
   const navigate = useNavigate();
   const { backendUrl, setLoggedin } = useContext(AppContent);
@@ -38,7 +36,7 @@ const Login = () => {
     }
 
     setError("");
-   // LOGIN API CALL
+    // LOGIN API CALL
     try {
       const response = await axiosInstance.post(API_PATHS.AUTH.LOGIN, {
         email,
@@ -51,13 +49,13 @@ const Login = () => {
         localStorage.setItem("user", JSON.stringify(user)); // Store token in local storage
         updateUser(user); // Update user context
 
-        // 🟢 CHANGE: Role-based redirect
+        // Role-based redirect
         if (user.role === "super-admin") {
           toast.success("Welcome Super Admin!");
-          navigate("/super-admin/dashboard"); // go to super admin panel
+          navigate("/super-admin/dashboard");
         } else {
-          toast.success("Login successfully!"); // normal user/admin flow
-          navigate("/"); // Redirect to dashboard
+          toast.success("Login successfully!");
+          navigate("/");
         }
       }
     } catch (error) {
@@ -65,55 +63,55 @@ const Login = () => {
         setError(error.response.data.message);
       } else {
         setError(error.message);
-        // setError("Something went wrong. Please try again later.");
       }
     }
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-linear-to-r/srgb from-cyan-300 to-sky-400">
-      <div className="bg-transparent p-10 rounded-lg shadow-2xl w-full sm:w-96 text-white text-sm ">
-        <h2 className="text-3xl font-semibold text-white text-center mb-3">
+    <div className="flex items-center justify-center min-h-screen px-6 sm:px-0 bg-gradient-to-r from-cyan-200 to-sky-300">
+      <div className="bg-white/90 p-10 rounded-3xl shadow-2xl w-full sm:w-96 text-teal-900 text-sm">
+        <h2 className="text-3xl font-bold text-center mb-3 bg-clip-text text-transparent bg-gradient-to-r from-cyan-600 to-sky-700">
           Login
         </h2>
 
-        <p className="text-center text-sm mb-6">Login to your account!!</p>
+        <p className="text-center text-sm mb-6">Login to your account</p>
 
         <form onSubmit={onSubmitHandler}>
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#1294e0]">
-            <img src={assets.mail_icon} alt="" />
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
+            <img src={assets.mail_icon} alt="email icon" />
             <input
-              onChange={(e) => setEmail(e.target.value)} //stores the data through setName in the value variable 'name'
+              onChange={(e) => setEmail(e.target.value)}
               value={email}
-              className="bg-transparent outline-none"
+              className="bg-transparent outline-none w-full text-white placeholder-white"
               type="email"
               placeholder="Email Id"
               required
             />
           </div>
 
-          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-[#1294e0]">
-            <img src={assets.lock_icon} alt="" />
+          <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
+            <img src={assets.lock_icon} alt="lock icon" />
             <input
-              onChange={(e) => setPassword(e.target.value)} //stores the data through setName in the value variable 'name'
+              onChange={(e) => setPassword(e.target.value)}
               value={password}
-              className="bg-transparent outline-none"
+              className="bg-transparent outline-none w-full text-white placeholder-white"
               type="password"
               placeholder="Password"
               required
             />
           </div>
+
           {error && <p className="text-red-600 text-sm pb-2.5">{error}</p>}
 
-          <button className="w-full py-2.5 rounded-full bg-[#086ea8] text-white font-medium cursor-pointer hover:from-blue-600 hover:to-cyan-600 hover:scale-105 hover:shadow-lg transition-all duration-300">
+          <button className="w-full py-2.5 rounded-full bg-sky-600 text-white font-medium cursor-pointer hover:scale-105 hover:shadow-xl transition-all duration-300">
             Login
           </button>
 
-          <p className="text-white text-center text-xs mt-4">
-            Don't have an account? {"   "}
+          <p className="text-center text-sm mt-4 text-slate-500">
+            Don't have an account?{" "}
             <span
               onClick={() => navigate("/register")}
-              className="text-blue-900 cursor-pointer underline"
+              className="text-sky-600 cursor-pointer underline"
             >
               Sign Up.
             </span>

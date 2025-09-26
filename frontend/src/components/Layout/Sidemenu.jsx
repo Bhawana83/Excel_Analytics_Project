@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {
+import {  
   Home,
   Upload,
   Clock,
@@ -130,7 +130,7 @@ const SideMenu = ({ activeMenu }) => {
   };
 
   return (
-    <div className="w-65 h-[calc(100vh-61px)] bg-cyan-500 border-r border-gray-200/50 p-5 sticky top-[61px] z-20 shadow-[0_2px_8px_rgba(0,0,0,0.05)]  border-r-2 border-gray-300">
+    <div className="w-65 h-[calc(100vh-61px)]  border-r border-gray-200/50 p-5 sticky top-[61px] z-20 shadow-[0_2px_8px_rgba(0,0,0,0.05)]  border-r-2 border-gray-300">
       {/* Menu Items */}
       <nav className="flex-1 px-2 py-4 space-y-1">
         {user?.role === "super-admin" ? (

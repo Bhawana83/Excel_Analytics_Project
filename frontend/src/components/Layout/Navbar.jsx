@@ -5,6 +5,7 @@ import { UserContext } from "../../Context/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 
+
 const Navbar = ({ activeMenu }) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);
   const { user, clearUser } = useContext(UserContext);
@@ -22,7 +23,7 @@ const Navbar = ({ activeMenu }) => {
   const initial = user?.name ? user.name.charAt(0).toUpperCase() : "U";
 
   return (
-    <div className="flex items-center justify-between bg-cyan-500 border-b border-gray-200/50 py-3 px-7 sticky top-0 z-30 backdrop-blur-sm shadow-sm">
+    <div className="flex items-center justify-between  border-b border-gray-200/50 py-3 px-7 sticky top-0 z-30 backdrop-blur-sm shadow-sm">
       {/* Left side: toggle + logo */}
       <div className="flex items-center gap-4">
         <button
@@ -36,7 +37,7 @@ const Navbar = ({ activeMenu }) => {
           )}
         </button>
 
-        <h2 className="text-4xl font-bold text-white tracking-tight">
+        <h2 className="text-4xl font-bold text-sky-600 tracking-tight">
           Excel Analyzer
         </h2>
       </div>
@@ -44,7 +45,7 @@ const Navbar = ({ activeMenu }) => {
       {/* Right side: user avatar with dropdown */}
       <div className="relative group">
         {/* Avatar Circle */}
-        <div className="w-11 h-11 flex items-center justify-center rounded-full bg-cyan-600 text-white font-medium cursor-pointer select-none text-3xl">
+        <div className="w-11 h-11 flex items-center justify-center rounded-full bg-sky-700 text-white font-medium cursor-pointer select-none text-3xl">
           {initial}
         </div>
 

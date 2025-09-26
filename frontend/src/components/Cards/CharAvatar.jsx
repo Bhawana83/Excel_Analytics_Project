@@ -1,6 +1,6 @@
 import { getInitials } from "../../utils/helpler";
 
-
+ 
 export default function CharAvatar({ fullName, width, height, style }) {
   return (
     <div

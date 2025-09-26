@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { LuTrash2 } from "react-icons/lu";
-
+ 
 export default function UploadInfoCard({
   size,
   item,
@@ -69,91 +69,3 @@ export default function UploadInfoCard({
     </div>
   );
 }
-
-
-
-// import { FolderOpen } from "lucide-react";
-// import { useEffect, useState } from "react";
-// import {
-//   LuUtensils,
-//   LuTrendingUp,
-//   LuTrendingDown,
-//   LuTrash2,
-// } from "react-icons/lu";
-
-// export default function UploadInfoCard({
-//   size,
-//   item,
-//   title,
-//   icon, 
-//   date,
-//   hideDeleteBtn,
-// }) {
-//   const getAmountStyles = () =>
-//     item.deleted !== true
-//       ? "bg-green-50 text-green-500"
-//       : "bg-red-50 text-red-500";
-
-//   const [iconSize, setIconSize] = useState(window.innerWidth <= 640 ? 12 : 18);
-
-//   useEffect(() => {
-//     const handleResize = () => {
-//       setIconSize(window.innerWidth <= 640 ? 12 : 18);
-//     };
-
-//     window.addEventListener("resize", handleResize);
-//     return () => window.removeEventListener("resize", handleResize);
-//   }, []);
-
-//   // Format File Size
-//   const formatFileSize = (bytes) => {
-//     if (bytes === 0) return "0 Bytes";
-//     const k = 1024;
-//     const sizes = ["Bytes", "KB", "MB", "GB", "TB"];
-//     const i = Math.floor(Math.log(bytes) / Math.log(k));
-//     return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + " " + sizes[i];
-//   };
-  
-
-//   return (
-//     <div className="group relative flex items-center max-sm:gap-2.5 max-sm:p-1.5 gap-4 mt-3 p-3 rounded-lg hover:bg-gray-100/60">
-//       <div
-//         className={`max-sm:w-10 max-sm:h-10 w-12 h-12 flex items-center justify-center text-xl text-gray-800 bg-gray-100 rounded-full ${
-//           item.deleted !== true ? "bg-green-500" : "bg-red-500"
-//         }`}
-//       >
-//         {icon}
-//       </div>
-
-//       <div className="flex-1 flex items-center justify-between">
-//         <div>
-//           <p className="max-sm:text-xs text-sm text-gray-700 font-semibold">
-//             {title} ({formatFileSize(size)})
-//           </p>
-//           <p className="max-sm:text-[11px] text-xs text-gray-400 mt-1">
-//             {date}
-//           </p>
-//         </div>
-
-//         <div className="flex items-center gap-2">
-//           {!hideDeleteBtn && (
-//             <button
-//               className="text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity  hover:text-red-500 cursor-pointer"
-//               //   onClick={onDelete}
-//             >
-//               <LuTrash2 size={iconSize} />
-//             </button>
-//           )}
-
-//           <div
-//             className={`flex items-center gap-2 max-sm:px-1.5 max-sm:gap-1 px-3 py-1.5 rounded-md ${getAmountStyles()}`}
-//           >
-//             <h6 className="max-sm:text-[11px] text-sm font-medium w-fit">
-//               {item.deleted === true ? "- Delete" : "+ Upload"} 
-//             </h6>
-//           </div>
-//         </div>
-//       </div>
-//     </div>
-//   );
-// }
