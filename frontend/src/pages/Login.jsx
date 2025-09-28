@@ -80,7 +80,11 @@ const Login = () => {
 
         <form onSubmit={onSubmitHandler}>
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <img src={assets.mail_icon} alt="email icon"  className="w-5 h-5 filter invert brightness-0"/>
+            <img
+              src={assets.mail_icon}
+              alt="email icon"
+              className="w-5 h-5 filter invert brightness-0"
+            />
 
             <input
               onChange={(e) => setEmail(e.target.value)}
@@ -93,7 +97,11 @@ const Login = () => {
           </div>
 
           <div className="mb-4 flex items-center gap-3 w-full px-5 py-2.5 rounded-full bg-gradient-to-r from-cyan-400 to-sky-500 shadow-inner">
-            <LockIcon className="w-5 h-5 text-white fill-current " />
+            <img
+              src={assets.lock_icon}
+              alt="lock icon"
+              className="w-5 h-5 filter invert brightness-0"
+            />
 
             <input
               onChange={(e) => setPassword(e.target.value)}
