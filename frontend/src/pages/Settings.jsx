@@ -6,7 +6,7 @@ import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
 import DashboardLayout from "../components/Layout/DashboardLayout";
-import { UserContext } from "../Context/userContext";
+import { UserContext } from "../context/userContext";
 
 const SettingsPage = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -152,4 +152,3 @@ const SettingsPage = () => {
 };
 
 export default SettingsPage;
-

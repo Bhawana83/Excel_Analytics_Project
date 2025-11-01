@@ -1,10 +1,9 @@
 import { Menu, X, LogOut } from "lucide-react";
 import { useState, useContext } from "react";
 import Sidemenu from "./Sidemenu";
-import { UserContext } from "../../Context/userContext";
+import { UserContext } from "../../context/userContext";
 import { useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
-
 
 const Navbar = ({ activeMenu }) => {
   const [openSideMenu, setOpenSideMenu] = useState(false);

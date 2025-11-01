@@ -1,5 +1,5 @@
 import { useContext, useEffect, useState } from "react";
-import {  
+import {
   Home,
   Upload,
   Clock,
@@ -25,7 +25,7 @@ import {
 import { useNavigate, useLocation, Link } from "react-router-dom";
 import CharAvatar from "../Cards/CharAvatar";
 import { toast } from "react-toastify";
-import { UserContext } from "../../Context/userContext";
+import { UserContext } from "../../context/userContext";
 
 // Submenus
 const adminItems = [
