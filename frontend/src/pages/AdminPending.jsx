@@ -5,7 +5,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { toast } from "react-toastify";
 import axiosInstance from "../utils/axiosInstance";
 import { API_PATHS } from "../utils/apiPaths";
-import { UserContext } from "../Context/userContext";
+import { UserContext } from "../context/userContext";
 
 const TOTAL_SECONDS = 300; // 5 minutes
 
